@@ -1,32 +1,99 @@
-# ACIS End-to-End Insurance Risk Analytics (Feb 2014 – Aug 2015)
+ACIS Insurance Risk Analytics
+Project Overview
 
-## Business Objective
-Identify low-risk customer segments and support risk-based pricing decisions (premium optimization) for AlphaCare Insurance Solutions (ACIS) in South Africa.
+The goal of this project is to analyze ACIS insurance data to uncover patterns related to risk and profitability. The insights from this analysis aim to support better decision-making for premium adjustments and marketing strategies. This repository contains data, exploratory data analysis (EDA), hypothesis testing, and predictive modeling workflows.
 
-## What’s included (this week / Task 1)
-- Data understanding and quality assessment
-- Exploratory Data Analysis (EDA) for risk and profitability signals
-- Initial insights to guide segmentation and later modeling (Tasks 3–4)
+Project Structure
+acis-insurance-risk-analytics/
+├── data/                        # Raw and processed datasets
+│   ├── processed_cleaned_data.csv.dvc
+│   └── MachineLearningRating_v3.txt
+├── notebooks/                    # Jupyter notebooks for analysis
+│   └── task_2_eda.ipynb
+├── src/                          # Python modules (planned)
+├── .dvc/                         # DVC folder for data versioning
+├── .gitignore
+├── requirements.txt              # Python dependencies
+└── README.md
 
-## Repository structure
-- `data/` – raw and (later) versioned datasets
-- `notebooks/` – EDA notebooks (profiling + visual insights)
-- `src/` – reusable data loading, cleaning, and analysis utilities
-- `reports/` – exported plots and analysis summaries
-- `docs/` – assumptions, definitions, and methodology notes
+Key Features
+Task 1: Git & Project Setup
 
-## Key metrics (risk & profitability)
-- Loss Ratio = TotalClaims / TotalPremium
-- Claim Frequency = P(At least one claim | policy)
-- Claim Severity = E[TOTALClaims | claim occurred]
-- Margin = TotalPremium - TotalClaims
+Initialized Git repository and set up branch structure (task-1, task-2, task-3-4)
 
-## How to run (baseline)
-1. Install requirements: `pip install -r requirements.txt`
-2. Run EDA notebook: `notebooks/01_eda.ipynb`
+Configured .gitignore for project and DVC cache
 
-## Milestones (Task 1 deliverables)
-- Data summary + quality checks (missingness, types)
-- Distributions + outlier detection (TotalClaims, CustomValueEstimate, etc.)
-- Geography & segment comparisons (Province, VehicleType, Gender)
-- 3 high-quality visual insights (saved to `reports/figures/`)
+Setup DVC for dataset versioning
+
+Task 2: Data Processing & EDA
+
+Cleaned and preprocessed ACIS insurance data
+
+Added processed dataset to DVC
+
+Performed descriptive statistics, missing value checks, and visual exploration
+
+Notebook includes univariate and bivariate analysis, outlier detection, and correlation analysis
+
+Task 3: Hypothesis Testing
+
+Conducted statistical tests to evaluate key assumptions:
+
+T-test: Premium differs by Gender
+
+ANOVA: Premium differs by Province
+
+Pearson correlation: Significant correlation between TotalPremium and TotalClaims
+
+Task 4: Predictive Modeling
+
+Implemented a pipeline with preprocessing for numeric and categorical features
+
+Used SimpleImputer, StandardScaler, and OneHotEncoder for feature preprocessing
+
+Trained a LinearRegression model to predict TotalPremium
+
+Handled missing values and inconsistent data types in the dataset
+
+Data Versioning & Large File Handling
+
+Large files are tracked using DVC and Git LFS
+
+.dvc/cache and .dvc/tmp are excluded from Git via .gitignore
+
+Example: data/processed_cleaned_data.csv and data/MachineLearningRating_v3.txt are managed with DVC/Git LFS
+
+Setup Instructions
+
+Clone the repository:
+
+git clone https://github.com/life412/acis-insurance-risk-analytics.git
+cd acis-insurance-risk-analytics
+
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Install Git LFS (if not already installed):
+
+git lfs install
+
+
+Pull large datasets via DVC:
+
+dvc pull
+
+
+Open Jupyter Notebook for EDA:
+
+jupyter notebook notebooks/task_2_eda.ipynb
+
+Next Steps
+
+Create reusable Python modules for EDA (src/eda.py) and predictive modeling (src/model.py)
+
+Extend predictive models with additional features and algorithms
+
+Prepare final report summarizing key insights, statistical tests, and model results
