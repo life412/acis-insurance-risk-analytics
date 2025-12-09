@@ -32,6 +32,8 @@ Cleaned and preprocessed ACIS insurance data
 Added processed dataset to DVC
 
 Performed descriptive statistics, missing value checks, and visual exploration
+<img width="721" height="473" alt="image" src="https://github.com/user-attachments/assets/c003a7db-8639-48e1-91f0-8b77080a1878" />
+
 
 Notebook includes univariate and bivariate analysis, outlier detection, and correlation analysis
 
